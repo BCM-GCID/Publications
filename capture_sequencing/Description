@@ -1,1 +1,7 @@
 Files for Oligonucleotide Capture Sequencing of the SARS-CoV-2 Genome and Subgenomic Fragments from COVID-19 Individuals
+
+CaptureMS-virmapCode.txt - Virmap read processing and assembly documentation
+
+Subgenomic-RNA-analysis.txt - subgenomic RNA analysis
+
+gene-read-count-splicing-leader-only.pl - inhouse perl script for gene junction read count
