@@ -1,22 +1,17 @@
 II. Subgenomic RNA analysis
-1. STAR alignment for subgenomic RNA analysis
-/hgsc_software/gen-asm/STAR/STAR-2.7.3a/bin/Linux_x86_64_static/STAR \
-  --outFileNamePrefix <SampleName> \
-  --genomeDir  <NC_045512.2 genome> \
-  --readFilesIn <read1-fastq>  <read2-fastq> \
-  --runThreadN 4  --outFilterType BySJout --outFilterMultimapNmax 20 --alignSJoverhangMin 8 \
-  --outSJfilterOverhangMin 12 12 12 12 --outSJfilterCountUniqueMin 1 1 1 1 \
-  --outSJfilterCountTotalMin 1 1 1 1 --outSJfilterDistToOtherSJmin 0 0 0 0 \
-  --outFilterMismatchNmax 999 --outFilterMismatchNoverReadLmax 0.04 --scoreGapNoncan -4 --scoreGapATAC -4 \
-  --chimOutType WithinBAM HardClip --chimScoreJunctionNonGTAG 0 -- alignSJstitchMismatchNmax -1 -1 -1 -1 \
-  --alignIntronMin 20  --alignIntronMax 1000000 --alignMatesGapMax 1000000 --outSAMstrandField intronMotif \
-  --outStd SAM --outSAMattributes NM MD   --outSAMunmapped Within \
-  --outSAMattrRGline ID:0 SM:<SampleName> LB:<LibraryName> PU:<SampleName> CN:BCM PL:Illumina \
-  |/hgsc_software/samtools/samtools-1.9/bin/samtools view -bS - -o <SampleName>.bam
-
-/hgsc_software/samtools/samtools-1.9/bin/samtools sort <SampleName>.bam  -o <SampleName>.sorted.bam
+1. Illumina reads were first downsampled to 1 million total reads for each sample using seqtk (https://github.com/lh3/seqtk):
+seqtk sample -s100 \
+   <sample_name>.forward.fastq.gz 500000 >  <sample_name>.500000.1.fq
+seqtk sample -s100 \
+   <sample_name>.reverse.fastq.gz 500000 >  <sample_name>.500000.2.fq
 
 
-2. Inhouse script used for junction read counts
-perl gene-read-count-splicing-leader-only.pl  <SampleName>  <SampleName>.sorted.bam  <NC_045512.2 GTF> \
-  <SampleName>.junction.read.count.txt
+2. Subgenomic RNA analysis was performed using periscope (PMID:33722935):
+periscope \
+  --fastq  <sample_name>.500000.1.fq  <sample_name>.500000.2.fq \
+  --output-prefix  <sample_name> \
+  --sample <sample_name> \
+  --resources <path_to_periscope>/resources/ \
+  --technology illumina \
+  --threads 1
+
