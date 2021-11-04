@@ -1,4 +1,4 @@
-This consists of all the scripts, used to assemble the genome and compare to older *Cryptosporidium parvum* assemblies. All scripts and outputs have also been submitted to GigaScience as part of the manuscript submission.
+This consists of all the scripts, used to assemble the  *Cryptosporidium parvum* genome and compare to older assemblies. All scripts and outputs have also been submitted to GigaScience as part of the manuscript submission.
 
 **Publication Link**
 
@@ -18,6 +18,17 @@ bioRixv : https://www.biorxiv.org/content/10.1101/2021.07.07.451495v2
     - Instrument id : A00733
     - Flow cell id : H5TTKDSX2
     - Lane barcode : H5TTKDSX2-4-IDUDI0001
+
+All various sub-folders in this repo are listed below:
+
+- assembly : Different assemblies performed on long reads with pass and fail ONT reads
+- busco  : Buso analysis for Canu assembly
+- clustal_alignment  : ClustalW alignments for the last result section
+- comparison  : Genome alignments using Mummer
+- Cryptosporidium_assemblies  : Holds the differnet versions of our assembly from raw Canu to renamed v2 that was submitted to NCBI
+- genome_est  : Estimation of genome size using genomescope +jellyfish based on short reads
+- polish  : Error correction of Canu assmebly
+- read_len  : Summary of readlenght to produce Fig2
 
 
 
