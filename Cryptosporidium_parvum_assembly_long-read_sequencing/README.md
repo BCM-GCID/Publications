@@ -4,6 +4,8 @@ This consists of all the scripts, used to assemble the  *Cryptosporidium parvum*
 
 bioRixv : https://www.biorxiv.org/content/10.1101/2021.07.07.451495v2
 
+The paper has been published in GigaScience : https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giac010/6528769
+
 **Long-read Sequencing :**
   - The DNA from *Cryptosporidium parvum* oocyst was run on the PromethION :
     - Flow Cell : FLO-PRO002
